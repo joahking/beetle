@@ -252,10 +252,10 @@ module Beetle
       if @exception
         ack!
         RC::DecodingError
-      elsif expired?
-        logger.warn "Beetle: ignored expired message (#{msg_id})!"
-        ack!
-        RC::Ancient
+#      elsif expired?
+#        logger.warn "Beetle: ignored expired message (#{msg_id})!"
+#        ack!
+#        RC::Ancient
       elsif simple?
         ack!
         run_handler(handler) == RC::HandlerCrash ? RC::AttemptsLimitReached : RC::OK
